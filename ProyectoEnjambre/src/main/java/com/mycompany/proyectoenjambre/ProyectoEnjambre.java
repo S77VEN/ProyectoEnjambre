@@ -3,15 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
 
-package com.mycompany.enjambre;
+package com.mycompany.proyectoenjambre;
 
 /**
  *
  * @author stive
  */
-public class Enjambre {
+public class ProyectoEnjambre {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Tablero t = new Tablero();
+        t.setVisible(true);
     }
+ 
 }
