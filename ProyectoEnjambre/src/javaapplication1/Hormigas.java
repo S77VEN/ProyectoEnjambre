@@ -20,5 +20,6 @@ public Hormigas(int x, int y){
     imagen = new JLabel();
     imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ataque.png")));
 }
-         
+//Hola como esta         
+
 }
