@@ -8,18 +8,14 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author stive
+ * @author xavid
  */
-public abstract class Hormigas {
+public abstract class Objeto {
     int posX;
     int posY;
+    int salud;
     JLabel imagen;
     
+    public abstract void desaparecer();
     
-    public abstract void recursoCerca ();
-    public abstract void enemigoCerca ();
-    public abstract void otraLlevaRecurso();
-    public abstract void otraDetectoEnemigo();
-    public abstract void otraBuscarecurso(); 
-         
 }
