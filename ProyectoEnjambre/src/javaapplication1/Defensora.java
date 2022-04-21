@@ -17,8 +17,6 @@ public class Defensora extends Hormigas {
     public Defensora (int x, int y){
         posX = x;
         posY = y;
-        imagen = new JLabel();
-        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ataque.png")));
     }
     
     
