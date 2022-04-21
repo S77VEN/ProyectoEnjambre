@@ -12,10 +12,9 @@ import java.awt.Point;
  */
 public class Tablero extends javax.swing.JFrame {
     int cantidadH = 6;
+    int cantidadO = 6;
     Hormigas listaH[] = new Hormigas [cantidadH];
-    
-   
-    
+    Objeto listaO[] = new Objeto [cantidadO];
     
     /**
      * Creates new form Tablero
@@ -24,15 +23,33 @@ public class Tablero extends javax.swing.JFrame {
     public Tablero() {
         initComponents();
     }
-    public void inicializarHormigas(){
-        int x[] = {50,100,150,200,250,300};
-        int y[] = {50,100,150,200,250,300};
-        for (int i = 0; i < cantidadH; i++) {
-            listaH[i] = new Hormigas(x[i],y[i]);
-            jPanel1.add(listaH[i].imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(x[i], y[i], 110, 90));
-            pack();
-        }
-    }
+    public void inicializarHO(){
+         int x[] = {100,150,200,250,300,350};
+         int y[] = {100,150,200,250,300,350};
+         
+         int x1[] = {450, 500, 550, 600, 650, 700};
+         int y1[] = {400, 400, 400, 400, 400, 400};
+
+         for (int i = 0; i < cantidadH; i++) {
+             if (i%2 == 0){
+                 listaH[i] = new Defensora(x[i], y[i]);
+                 listaO[i] = new Obstaculo(x1[i],y1[i]);
+                 
+                 jPanel1.add(listaH[i].imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(x[i], y[i], 110, 90));
+                 
+                 pack();
+             }
+             else{
+                 listaH[i] = new Recolectora(x[i], y[i]);
+                 listaO[i] = new Enemigo(x1[i],y1[i]);
+                 
+                 jPanel1.add(listaH[i].imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(x[i], y[i], 110, 90));
+                
+                 pack();
+             }
+
+         }
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,7 +112,7 @@ public class Tablero extends javax.swing.JFrame {
                     }
                 }
             };th.start();*/
-            inicializarHormigas();
+            inicializarHO();
     }//GEN-LAST:event_StartActionPerformed
 
     /**
