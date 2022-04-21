@@ -11,14 +11,14 @@ package javaapplication1;
 public class Simulacion {
     public static void main(String[] args) throws Exception {
         
-        
         Tablero tablero = new Tablero(); 
         tablero.setVisible(true);
         int i = 5;
         boolean ventana = true;
         
         while (ventana){
-            tablero.moverHormiga(i,i);
+            
+            
         }
             
         
