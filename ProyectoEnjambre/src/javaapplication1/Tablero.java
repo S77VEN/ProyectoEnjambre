@@ -13,11 +13,14 @@ import java.awt.event.*;
  * @author stive
  */
 public class Tablero extends javax.swing.JFrame {
-    int cantidadH = 6;
-    int cantidadO = 6;
+    int cantidadH = 4;
+    int cantidadO = 4;
     Hormigas listaH[] = new Hormigas [cantidadH];
     Objeto listaO[] = new Objeto [cantidadO];
-    JLabel matriz[][] = new JLabel[10][10]; 
+    JLabel matriz[][] = new JLabel[16][8]; 
+    int listaPosiciones[][] =  new int[5][2];
+    
+    
     
     /**
      * Creates new form Tablero
@@ -25,34 +28,45 @@ public class Tablero extends javax.swing.JFrame {
     
     public Tablero() {
         initComponents();
-        inicializarHO();
+        inicializarArregloLabels();
+        modificarLabels(matriz);
+        colocarBase();
+        colocarHormigas();
     }
-    
-    public void inicializarHO(){
-        for (int i = 0; i <6 ; i++ ){
-            if (i%2 == 0){
-                listaH[i] = new Defensora(0,0);
-            }
-            else{
-                listaH[i] = new Recolectora(0,0);
-            }
-        }
-        
-        
-        for (int i = 0; i < 10; i++){
-            for (int j = 0; j<10; j++){
+    public void inicializarArregloLabels(){
+        for (int i = 0; i < 16; i++){
+            for (int j = 0; j<8; j++){
                 matriz[i][j] = new JLabel();
-       
-                jPanel1.add(matriz[i][j], new org.netbeans.lib.awtextra.AbsoluteConstraints(150 + i * 150, 10, 150, 150 + j*200 ));
-                System.out.println("Agregado");
+                jPanel1.add(matriz[i][j], new org.netbeans.lib.awtextra.AbsoluteConstraints(i*150, 10, 150 ,j*150));
             } 
         }
-        matriz[0][0].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/base.png")));
         pack();
      }
-    
-    
-    
+    public void modificarLabels(JLabel matriz [][]){
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 8; j++) {
+           
+            matriz[i][j].setOpaque(true);
+            matriz[i][j].setForeground(new java.awt.Color(255, 0, 0));
+            matriz[i][j].setBackground(new java.awt.Color(255, 255, 0));
+            jPanel1.add(matriz[i][j], new org.netbeans.lib.awtextra.AbsoluteConstraints(i*100, j*100, 98, 98));
+            }
+        }
+    }
+    public void colocarBase(){
+        matriz[0][0].setOpaque(false);
+        matriz[0][0].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/base.png")));
+    }
+    public void colocarHormigas(){
+        matriz[1][2].setOpaque(false);
+        matriz[1][2].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ataque.png")));
+        matriz[2][1].setOpaque(false);
+        matriz[2][1].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ataque.png")));
+        matriz[1][1].setOpaque(false);
+        matriz[1][1].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
+        matriz[2][2].setOpaque(false);
+        matriz[2][2].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));       
+    }
     public void apagarIcono (JLabel anterior){
         anterior.setVisible(false);
     }
@@ -81,16 +95,21 @@ public class Tablero extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Start = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
+        Start = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 51, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 51, 51));
         jPanel1.setAutoscrolls(true);
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 1630, 820));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1830, 920));
 
         Start.setText("Play");
         Start.addActionListener(new java.awt.event.ActionListener() {
@@ -98,12 +117,7 @@ public class Tablero extends javax.swing.JFrame {
                 StartActionPerformed(evt);
             }
         });
-        jPanel1.add(Start, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 79, 41));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 0, 1780, 935));
-
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
-        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1830, 940));
+        getContentPane().add(Start, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 79, 41));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
