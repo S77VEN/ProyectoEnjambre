@@ -14,14 +14,14 @@ public class Defensora extends Hormigas {
     
     //CONSTRUCTOR
     
-    public Defensora (int x, int y){
-        posX = x;
-        posY = y;
+    public Defensora (){
+        posX = 0;
+        posY = 0;
     }
     
     
     @Override
-    public void recursoCerca() {
+    public void recursoCerca(JLabel[][] matriz) {
         System.out.println("RC");
     }
 

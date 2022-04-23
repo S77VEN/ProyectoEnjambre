@@ -13,16 +13,6 @@ public class Simulacion {
         
         Tablero tablero = new Tablero(); 
         tablero.setVisible(true);
-        int i = 5;
-        boolean ventana = true;
-        
-        while (ventana){
-            
-            
-        }
-            
-        
-            
     }
      
     

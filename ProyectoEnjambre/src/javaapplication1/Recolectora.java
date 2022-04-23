@@ -14,15 +14,15 @@ public class Recolectora extends Hormigas{
     
     //CONSTRUCTOR
     
-    public Recolectora(int x, int y){
-        posX = x;
-        posY = y;
+    public Recolectora(){
+        posX = 0;
+        posY = 0;
     }
     
     // METODOS
     
     @Override
-    public void recursoCerca() {
+    public void recursoCerca(JLabel[][] matriz) {
         System.out.println("RC");
     }
 
