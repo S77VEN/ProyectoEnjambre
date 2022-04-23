@@ -15,10 +15,11 @@ import java.awt.event.*;
 public class Tablero extends javax.swing.JFrame {
     int cantidadH = 4;
     int cantidadO = 4;
+    int casillasX = 16;
+    int casillasY = 10;
     Hormigas listaH[] = new Hormigas [cantidadH];
     Objeto listaO[] = new Objeto [cantidadO];
-    JLabel matriz[][] = new JLabel[16][8]; 
-    int listaPosiciones[][] =  new int[5][2];
+    JLabel matriz[][] = new JLabel[casillasX][casillasY]; 
     
     
     
@@ -29,19 +30,30 @@ public class Tablero extends javax.swing.JFrame {
     public Tablero() {
         initComponents();
         inicializarArregloLabels();
+        inicializarHormigas();
         modificarLabels(matriz);
         colocarBase();
         colocarHormigas();
     }
     public void inicializarArregloLabels(){
-        for (int i = 0; i < 16; i++){
-            for (int j = 0; j<8; j++){
+        for (int i = 0; i < casillasX; i++){
+            for (int j = 0; j<casillasY; j++){
                 matriz[i][j] = new JLabel();
                 jPanel1.add(matriz[i][j], new org.netbeans.lib.awtextra.AbsoluteConstraints(i*150, 10, 150 ,j*150));
             } 
         }
         pack();
      }
+    
+    public void inicializarHormigas (){
+        for (int i = 0; i < cantidadH; i++) {
+            if (i%2 == 0)
+                listaH[i] = new Defensora();
+            else
+                listaH[i] = new Recolectora();
+        }
+    }
+    
     public void modificarLabels(JLabel matriz [][]){
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 8; j++) {
@@ -57,22 +69,33 @@ public class Tablero extends javax.swing.JFrame {
         matriz[0][0].setOpaque(false);
         matriz[0][0].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/base.png")));
     }
+    
     public void colocarHormigas(){
         matriz[1][2].setOpaque(false);
         matriz[1][2].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ataque.png")));
+        
+        listaH[0].posX = 1;
+        listaH[0].posY = 2;
+        
         matriz[2][1].setOpaque(false);
         matriz[2][1].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ataque.png")));
+        listaH[2].posX = 2;
+        listaH[2].posY = 1;
+        
         matriz[1][1].setOpaque(false);
         matriz[1][1].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
+        listaH[1].posX = 1;
+        listaH[1].posY = 1;
+        
         matriz[2][2].setOpaque(false);
-        matriz[2][2].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));       
-    }
-    public void apagarIcono (JLabel anterior){
-        anterior.setVisible(false);
+        matriz[2][2].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
+        listaH[3].posX = 2;
+        listaH[3].posY = 2;
     }
     
+    
     public JLabel moverHormiga(int hormigaX, int hormigaY){
-        matriz[hormigaX][hormigaY].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ataque.png")));
+        matriz[hormigaX][hormigaY].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
         pack();
         return matriz[hormigaX][hormigaY];
     }
@@ -123,13 +146,8 @@ public class Tablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-        for (int i = 0; i < 6; i++) {
-            if (i > 0)
-                apagarIcono(matriz[i-1][i-1]);
-            moverHormiga(listaH[i].posX, listaH[i].posY);
-            listaH[i].posX += 1;
-            listaH[i].posY += 1;
-        }
+        matriz[2][2].setIcon(null);
+        matriz[3][2].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
     }//GEN-LAST:event_StartActionPerformed
 
     /**

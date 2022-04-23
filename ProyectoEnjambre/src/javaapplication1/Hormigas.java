@@ -13,10 +13,11 @@ import javax.swing.JLabel;
 public abstract class Hormigas {
     int posX;
     int posY;
+    boolean accion[] = {false, false, false}; 
     JLabel imagen;
     
     
-    public abstract void recursoCerca ();
+    public abstract void recursoCerca (JLabel[][] matriz);
     public abstract void enemigoCerca ();
     public abstract void otraLlevaRecurso();
     public abstract void otraDetectoEnemigo();
