@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package javaapplication1;
-
+import java.util.concurrent.TimeUnit;
 import java.awt.Point;
 import javax.swing.JLabel;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -65,7 +67,8 @@ public class Tablero extends javax.swing.JFrame {
         matriz[1][1].setOpaque(false);
         matriz[1][1].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
         matriz[2][2].setOpaque(false);
-        matriz[2][2].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));       
+        matriz[2][2].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));  
+        
     }
     public void apagarIcono (JLabel anterior){
         anterior.setVisible(false);
@@ -123,13 +126,8 @@ public class Tablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-        for (int i = 0; i < 6; i++) {
-            if (i > 0)
-                apagarIcono(matriz[i-1][i-1]);
-            moverHormiga(listaH[i].posX, listaH[i].posY);
-            listaH[i].posX += 1;
-            listaH[i].posY += 1;
-        }
+        matriz[2][2].setIcon(null);
+        matriz[2+1][3].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
     }//GEN-LAST:event_StartActionPerformed
 
     /**
