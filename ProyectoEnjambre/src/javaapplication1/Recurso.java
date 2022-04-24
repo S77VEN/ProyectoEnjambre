@@ -12,12 +12,8 @@ import javax.swing.JLabel;
  */
 public class Recurso extends Objeto {
     
-    public Recurso (int x, int y){
-        this.posX = x;
-        this.posY = y;
+    public Recurso (){
         this.salud = 10;
-        imagen = new JLabel();
-        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recurso.png")));
     }
 
     @Override

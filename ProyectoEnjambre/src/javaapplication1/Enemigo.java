@@ -11,12 +11,8 @@ import javax.swing.JLabel;
  */
 public class Enemigo extends Objeto{
     
-    public Enemigo (int x, int y){
-        this.posX = x;
-        this.posY = y;
+    public Enemigo (){
         this.salud = 10;
-        imagen = new JLabel();
-        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enemigo.png")));
     }
 
     @Override

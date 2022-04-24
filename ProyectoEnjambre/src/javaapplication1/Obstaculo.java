@@ -11,9 +11,7 @@ import javax.swing.JLabel;
  */
 public class Obstaculo extends Objeto {
     
-    public Obstaculo (int x, int y){
-        this.posX = x;
-        this.posY = y;
+    public Obstaculo (){
     }
 
     @Override
