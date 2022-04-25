@@ -39,7 +39,7 @@ public class Tablero extends javax.swing.JFrame {
             for (int j = 0; j<12; j++){
                 matriz[i][j] = new JLabel();
                 matriz[i][j].setText(String.valueOf(i)+","+String.valueOf(j));
-                matriz[i][j].setOpaque(false);
+                matriz[i][j].setOpaque(true);
                 matriz[i][j].setBackground(new java.awt.Color(255, 255, 0));
                 jPanel1.add(matriz[i][j], new org.netbeans.lib.awtextra.AbsoluteConstraints(i*65, j*65, 60, 60));
             } 
@@ -131,18 +131,6 @@ public class Tablero extends javax.swing.JFrame {
         }
     }
     
-    
-    public JLabel moverHormiga(int hormigaX, int hormigaY){
-        matriz[hormigaX][hormigaY].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
-        pack();
-        return matriz[hormigaX][hormigaY];
-    }
-    
-   
-    
-    
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,9 +171,12 @@ public class Tablero extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-        matriz[2][2].setIcon(null);
-        matriz[3][2].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
+        for (int i = 15; i >= 0; i--) {
+            System.out.println(listaO[7].getClass().getSimpleName());
+        }
+       
     }//GEN-LAST:event_StartActionPerformed
 
     /**

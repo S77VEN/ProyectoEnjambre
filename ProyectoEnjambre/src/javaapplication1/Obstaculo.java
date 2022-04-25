@@ -18,6 +18,16 @@ public class Obstaculo extends Objeto {
     public void desaparecer() {
         System.out.println("no desaparece");
     }
+
+    @Override
+    public void disminuirSalud() {
+        System.out.println("Nada");
+    }
+
+    @Override
+    public void recolocar() {
+        System.out.println("Nada");
+    }
     
     
 }

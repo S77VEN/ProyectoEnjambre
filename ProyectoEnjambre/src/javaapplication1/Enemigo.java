@@ -20,5 +20,20 @@ public class Enemigo extends Objeto{
         System.out.println("Desaparece xd");
     }
     
+    @Override
+    public void disminuirSalud(){
+        if (this.salud > 0){
+            this.salud -= 1;
+        }
+        else{
+            recolocar();
+        }
+    }
+    
+    @Override
+    public void recolocar(){
+        
+    }
+    
     
 }

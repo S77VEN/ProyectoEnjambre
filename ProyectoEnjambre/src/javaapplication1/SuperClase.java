@@ -10,14 +10,10 @@ import javax.swing.JLabel;
  *
  * @author xavid
  */
-public abstract class Objeto extends SuperClase {
-    int posX;
-    int posY;
-    int salud;
-    JLabel imagen;
+public abstract class SuperClase {
     
-    public abstract void desaparecer();
-    public abstract void disminuirSalud();
-    public abstract void recolocar();
+    
+    
+    
     
 }

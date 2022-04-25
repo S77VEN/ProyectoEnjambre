@@ -10,17 +10,21 @@ import javax.swing.JLabel;
  *
  * @author stive
  */
-public abstract class Hormigas {
+public abstract class Hormigas{
     int posX;
     int posY;
     boolean accion[] = {false, false, false}; 
     JLabel imagen;
     
-    
-    public abstract void recursoCerca (JLabel[][] matriz);
-    public abstract void enemigoCerca ();
+    public abstract void mover(JLabel campo, int masX, int masY);
+    public abstract void prioridades(Objeto arriba, Objeto abajo, Objeto izquierda, Objeto derecha);
+    public abstract void verificarCasillasCercanas(JLabel[][] matriz, Objeto[] objeto, Hormigas[] listaH);
+    public abstract void verificarCasillasLejanas();
+    public abstract void recursoCerca (Objeto recurso);
+    public abstract void enemigoCerca (Objeto enemigo);
+    public abstract void obstaculoCerca(Objeto obstaculo);
+    public abstract void cambiarAccion(int opcion);
     public abstract void otraLlevaRecurso();
     public abstract void otraDetectoEnemigo();
-    public abstract void otraBuscarecurso(); 
-         
+    public abstract void otraBuscarecurso();  
 }

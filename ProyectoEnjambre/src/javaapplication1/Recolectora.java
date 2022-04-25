@@ -20,15 +20,49 @@ public class Recolectora extends Hormigas{
     }
     
     // METODOS
+    @Override
+    public void mover(JLabel campo, int masX, int masY){
+        this.imagen.setIcon(null);
+        campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
+        this.imagen = campo;
+        this.posX = this.posX + masX;
+        this.posY = this.posY + masY;
+    }
     
     @Override
-    public void recursoCerca(JLabel[][] matriz) {
+    public void prioridades(Objeto arriba, Objeto abajo, Objeto izquierda, Objeto derecha){
+        
+    }
+    
+    @Override
+    public void verificarCasillasCercanas (JLabel[][] matriz, Objeto[] objeto, Hormigas[] listaH){
+    }
+    
+    @Override
+    public void verificarCasillasLejanas(){
+        
+    }
+    
+    @Override
+    public void recursoCerca(Objeto recurso) {
         System.out.println("RC");
     }
-
+    
     @Override
-    public void enemigoCerca() {
-        System.out.println("EC");
+    public void enemigoCerca (Objeto enemigo){
+    }
+    
+    @Override
+    public void obstaculoCerca(Objeto obstaculo){
+        
+    }
+    
+    
+    public void cambiarAccion(int opcion){
+        for (int i = 0; i < 3; i++) {
+            this.accion[i] = false;
+        }
+        this.accion[opcion] = true;
     }
 
     @Override
@@ -45,6 +79,8 @@ public class Recolectora extends Hormigas{
     public void otraBuscarecurso() {
         System.out.println("OBR");
     }
+
+    
 
    
     
