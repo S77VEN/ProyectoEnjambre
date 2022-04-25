@@ -6,6 +6,9 @@ package javaapplication1;
 
 import javax.swing.JLabel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author stive
@@ -17,9 +20,9 @@ public abstract class Hormigas{
     JLabel imagen;
     
     public abstract void mover(JLabel campo, int masX, int masY);
-    public abstract void prioridades(Objeto arriba, Objeto abajo, Objeto izquierda, Objeto derecha);
+    public abstract void prioridades(ArrayList<Objeto> cercanos, JLabel[][] matriz,  Hormigas[] listaH);
     public abstract void verificarCasillasCercanas(JLabel[][] matriz, Objeto[] objeto, Hormigas[] listaH);
-    public abstract void verificarCasillasLejanas();
+    public abstract void verificarHormigas (Hormigas[] listaH);
     public abstract void recursoCerca (Objeto recurso);
     public abstract void enemigoCerca (Objeto enemigo);
     public abstract void obstaculoCerca(Objeto obstaculo);

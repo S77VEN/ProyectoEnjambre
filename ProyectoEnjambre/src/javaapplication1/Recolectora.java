@@ -6,6 +6,8 @@ package javaapplication1;
 
 import javax.swing.JLabel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 /**
  *
  * @author xavid
@@ -30,16 +32,17 @@ public class Recolectora extends Hormigas{
     }
     
     @Override
-    public void prioridades(Objeto arriba, Objeto abajo, Objeto izquierda, Objeto derecha){
+    public void prioridades(ArrayList<Objeto> cercanos, JLabel[][] matriz,  Hormigas[] listaH){
         
     }
     
     @Override
     public void verificarCasillasCercanas (JLabel[][] matriz, Objeto[] objeto, Hormigas[] listaH){
+        
     }
     
     @Override
-    public void verificarCasillasLejanas(){
+    public void verificarHormigas (Hormigas[] listaH){
         
     }
     

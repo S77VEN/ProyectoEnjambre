@@ -6,6 +6,9 @@ package javaapplication1;
 
 import javax.swing.JLabel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author xavid
@@ -29,88 +32,128 @@ public class Defensora extends Hormigas {
     }
     
     @Override
-    public void prioridades(Objeto arriba, Objeto abajo, Objeto izquierda, Objeto derecha){
+    public void prioridades(ArrayList<Objeto> cercanos, JLabel[][] matriz, Hormigas[] listaH){
         if (this.accion[0]){
-            if (arriba.getClass().getSimpleName() == "Enemigo"){
-                this.enemigoCerca(arriba);
+            for (int i = 0; i < cercanos.size(); i++) {
+                if (cercanos.get(i).getClass().getSimpleName() == "Enemigos"){
+                    int difX = cercanos.get(i).posX - this.posX;
+                    int difY = cercanos.get(i).posY - this.posY;
+                    
+                    if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
+                        this.enemigoCerca(cercanos.get(i));
+                        break;
+                    }
+                    else{
+                        if (difX < 0){
+                            difX += 1;
+                        }
+                        else{
+                            difX -= 1; 
+                        }
+                        if (difY < 0){
+                            difY += 1;
+                        }
+                        else{
+                            difY -= 1;
+                        }
+                        this.mover(matriz[difX][difY], difX, difY);
+                        break;
+                    }
+                }
+                
+                
+                
+                else if(cercanos.get(i).getClass().getSimpleName() == "Recurso"){
+                    int difX = cercanos.get(i).posX - this.posX;
+                    int difY = cercanos.get(i).posY - this.posY;
+                    
+                    if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
+                        this.recursoCerca(cercanos.get(i));
+                        break;
+                    }
+                    else{
+                        if (difX < 0){
+                            difX += 1;
+                        }
+                        else{
+                            difX -= 1; 
+                        }
+                        if (difY < 0){
+                            difY += 1;
+                        }
+                        else{
+                            difY -= 1;
+                        }
+                        this.mover(matriz[difX][difY], difX, difY);
+                        break;
+                    }
+                }
+                
+                else if(cercanos.get(i).getClass().getSimpleName() == "Obstaculo"){
+                    int difX = cercanos.get(i).posX - this.posX;
+                    int difY = cercanos.get(i).posY - this.posY;
+                    
+                    if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
+                        if (difX < 0){
+                            difX += 2;
+                        }
+                        else{
+                            difX -= 2; 
+                        }
+                        if (difY < 0){
+                            difY += 1;
+                        }
+                        else{
+                            difY -= 1;
+                        }
+                    }
+                }
+                
+                else{
+                    verificarHormigas(listaH);
+                    
+                }
+                    
+                
+                
                 
             }
-            else if (abajo.getClass().getSimpleName() == "Enemigo"){
-                
-            }
-            else if (izquierda.getClass().getSimpleName() == "Enemigo"){
-                
-            }
-            else if (derecha.getClass().getSimpleName() == "Enemigo"){
-                
-            }
+            
+            
             
         }
     }
     
+    
+    
+    
     @Override
     public void verificarCasillasCercanas(JLabel[][] matriz, Objeto[] objeto, Hormigas[] listaH){
         
-        Objeto derecha = null;
-        Objeto izquierda = null;
-        Objeto arriba = null;
-        Objeto abajo = null;
+        ArrayList<Objeto> cercanos = new ArrayList<>();
+        int minX = this.posX - 2;
+        int minY = this.posY - 2;
+        
+        int maxX = this.posX + 2;
+        int maxY = this.posY + 2;
         
         // COMPARANDO CASILLAS OBJETOS
         for (int i = 0; i < 9; i++) {
-            //DERECHA
-            if (objeto[i].posX == this.posX + 1 && objeto[i].posY == this.posY){
-                derecha = objeto[i];
-            }
-            //ABAJO
-            if (objeto[i].posX == this.posX && objeto[i].posY == this.posY + 1){
-                abajo = objeto[i];
-            }
-            //IZQUIERDA
-            if (objeto[i].posX == this.posX - 1 && objeto[i].posY == this.posY){
-                izquierda = objeto[i];
-            }
-            //ARRIBA
-            if (objeto[i].posX == this.posX && objeto[i].posY == this.posY - 1){
-                arriba = objeto[i];
+            if((objeto[i].posX >= minX && objeto[i].posX <= maxX ) && (objeto[i].posY >=minY && objeto[i].posY <= maxY  )){
+                cercanos.add(objeto[i]);
             }
         }
         
-        // BUSCAR HORMIGAS
-        if (derecha == null){
-            for (int i = 0; i < 16; i++) {
-                if (listaH[i].posX == posX + 1 && listaH[i].posY == posY){
-                    
-                }
-            }
-        }
-        if (abajo == null){
-            for (int i = 0; i < 16; i++) {
-                if (listaH[i].posX == posX && listaH[i].posY == posY + 1){
-                    
-                }
-            }
-        }
-        if (izquierda == null){
-            for (int i = 0; i < 16; i++) {
-                if (listaH[i].posX == posX - 1 && listaH[i].posY == posY){
-                    
-                }
-            }
-        }
-        if (arriba == null){
-            for (int i = 0; i < 16; i++) {
-                if (listaH[i].posX == posX && listaH[i].posY == posY - 1){
-                    
-                }
-            }
+        if (cercanos.isEmpty()){
+            verificarHormigas(listaH);
         }
         
-        prioridades(arriba, abajo, izquierda, derecha);
+        prioridades(cercanos, matriz, listaH);
     }
     
     @Override
-    public void verificarCasillasLejanas(){
+    public void verificarHormigas(Hormigas[] listaH){
+        
         
     }
     
@@ -153,7 +196,6 @@ public class Defensora extends Hormigas {
     public void otraBuscarecurso() {
         System.out.println("OBR");
     }
-
   
     
 }
