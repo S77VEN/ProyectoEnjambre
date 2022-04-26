@@ -119,7 +119,6 @@ public class Recolectora extends Hormigas{
                 }
                 
                 else{
-                    System.out.println("Paso esto otra vez");
                     
                 }
                     
@@ -157,9 +156,13 @@ public class Recolectora extends Hormigas{
         prioridades(cercanos, matriz, listaH);
     }
     
+    @Override
+    public int hormigasVacias(Hormigas[] listaH, int newX, int newY){
+        return 1;
+    }
     
     @Override
-    public int verificarHormigas (JLabel[][] matriz, Hormigas[] listaH){
+    public void verificarHormigas (JLabel[][] matriz, Hormigas[] listaH){
         ArrayList<Hormigas> hcercana = new ArrayList<>();
         
         int minX = this.posX - 2;
@@ -176,10 +179,7 @@ public class Recolectora extends Hormigas{
                    hcercana.add(listaH[i]);
             }
         }
-        if (hcercana.isEmpty())
-            return 0;
-        else
-            return 1;
+        
     }
     
     

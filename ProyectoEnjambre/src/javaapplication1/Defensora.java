@@ -36,16 +36,13 @@ public class Defensora extends Hormigas {
         if (this.accion[0]){
             for (int i = 0; i < cercanos.size(); i++) {
                 if (cercanos.get(i).getClass().getTypeName()== "javaapplication1.Enemigo"){
-                    System.out.println("paso ene");
+                    
                     int difX = cercanos.get(i).posX - this.posX;
                     int difY = cercanos.get(i).posY - this.posY;
                     
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
                         this.enemigoCerca(cercanos.get(i));
                         break;
-                    }
-                    else if (verificarHormigas(matriz, listaH) == 0){
-                        this.posX = this.posX;
                     }
                     else{
                         if (difX < 0){
@@ -61,9 +58,13 @@ public class Defensora extends Hormigas {
                             difY -= 1;
                         }
                         
-                        
-                        this.mover(matriz[this.posX + difX][this.posY + difY], this.posX + difX, this.posY + difY);
-                        break;
+                        if (hormigasVacias(listaH, this.posX + difX, this.posY + difY) == 1){
+                            break;
+                        }
+                        else{
+                           this.mover(matriz[this.posX + difX][this.posY + difY], this.posX + difX, this.posY + difY);
+                           break; 
+                        }
                     }
                 }
                 
@@ -91,8 +92,14 @@ public class Defensora extends Hormigas {
                         else{
                             difY -= 1;
                         }
-                        this.mover(matriz[this.posX + difX][this.posY + difY], this.posX + difX, this.posY + difY);
-                        break;
+                        
+                        if (hormigasVacias(listaH, this.posX + difX, this.posY + difY) == 1){
+                            break;
+                        }
+                        else{
+                           this.mover(matriz[this.posX + difX][this.posY + difY], this.posX + difX, this.posY + difY);
+                           break; 
+                        }
                     }
                 }
                 
@@ -102,29 +109,15 @@ public class Defensora extends Hormigas {
                     int difX = cercanos.get(i).posX - this.posX;
                     int difY = cercanos.get(i).posY - this.posY;
                     
-                    this.mover(matriz[this.posX][this.posY + 1], this.posX, this.posY + 1);
-                    break;
-                    /*
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
-                        if (difX < 0){
-                            difX += 2;
-                        }
-                        else{
-                            difX -= 2; 
-                        }
-                        if (difY < 0){
-                            difY += 2;
-                        }
-                        else{
-                            difY -= 2;
-                        }
-                        
+                        this.mover(matriz[this.posX][this.posY + 1], this.posX, this.posY + 1);
+                        break;
                     }
-                    */
+                    
                 }
                 
                 else{
-                    System.out.println("Paso esto otra vez");
+                    verificarHormigas(matriz, listaH);
                     
                 }
             }
@@ -148,7 +141,6 @@ public class Defensora extends Hormigas {
         for (int i = 0; i < 9; i++) {
             if((objeto[i].posX >= minX && objeto[i].posX <= maxX ) && (objeto[i].posY >=minY && objeto[i].posY <= maxY  )){
                 cercanos.add(objeto[i]);
-                System.out.println(objeto);
             }
         }
         
@@ -160,7 +152,18 @@ public class Defensora extends Hormigas {
     }
     
     @Override
-    public int verificarHormigas(JLabel[][] matriz, Hormigas[] listaH){
+    public int hormigasVacias (Hormigas[] listaH, int newX, int newY){
+        for (int i = 0; i < 16; i++){
+            if ((listaH[i].posX == newX) && (listaH[i].posY == newY)){
+                return 1;
+            }
+        }
+        return 0;
+    }
+    
+    
+    @Override
+    public void verificarHormigas(JLabel[][] matriz, Hormigas[] listaH){
         ArrayList<Hormigas> hcercana = new ArrayList<>();
         
         int minX = this.posX - 2;
@@ -172,17 +175,19 @@ public class Defensora extends Hormigas {
         for (int i = 0; i < 16; i++){
             if ((listaH[i].posX >= minX && listaH[i].posX <= maxX ) && (listaH[i].posY >=minY && listaH[i].posY <= maxY )){
                 if (listaH[i] == this)
-                    this.posX = this.posX;
+                    ;
                 else
                    hcercana.add(listaH[i]);
             }
         }
-        if (hcercana.isEmpty())
-            return 0;
-        else
-            return 1;
+        if (hcercana.isEmpty()){
+            // Llamar funcion en caso de que no hayan hormigas cerca
+        }  
+        else{
+            interactuarHormigas(matriz, hcercana);
+        }
+        
     }
-    
     
     @Override
     public void interactuarHormigas (JLabel[][] matriz, ArrayList<Hormigas> hormigas){
@@ -204,6 +209,7 @@ public class Defensora extends Hormigas {
     public void enemigoCerca(Objeto enemigo) {
         this.cambiarAccion(1);
         enemigo.disminuirSalud();
+        System.out.println(enemigo.salud);
     }
     
     
