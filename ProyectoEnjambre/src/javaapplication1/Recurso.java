@@ -20,5 +20,15 @@ public class Recurso extends Objeto {
     public void desaparecer() {
         System.out.println("Desaparece xd");
     }
+
+    @Override
+    public void disminuirSalud() {
+        
+    }
+
+    @Override
+    public void recolocar() {
+        
+    }
     
 }
