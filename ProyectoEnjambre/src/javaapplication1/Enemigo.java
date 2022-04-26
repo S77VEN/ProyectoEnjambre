@@ -15,7 +15,6 @@ public class Enemigo extends Objeto{
     public Enemigo (){
         this.salud = 10;
     }
-    
     public int rangoRandom(int rango){
         Random aleatorio = new Random();
         int x = aleatorio.nextInt();
@@ -26,8 +25,6 @@ public class Enemigo extends Objeto{
         this.imagen.setIcon(null);
         System.out.println(this.imagen);
     }
-
-    
     @Override
     public void disminuirSalud(){
         if (this.salud > 0){
@@ -37,13 +34,10 @@ public class Enemigo extends Objeto{
             desaparecer();
         }
     }
-    
     @Override
     public void recolocar(){
         this.posX = rangoRandom(25);
         this.posY = rangoRandom(12);      
         System.out.println("recolocado xd");
-    }
-    
-    
+    }  
 }

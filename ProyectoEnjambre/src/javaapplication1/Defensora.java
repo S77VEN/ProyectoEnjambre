@@ -216,11 +216,22 @@ public class Defensora extends Hormigas {
                     int x = randomNum();
                     
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
-                        hormigasVacias(listaH,this.posX+1,this.posY);
                         if (hormigasVacias(listaH,this.posX+1,this.posY) == 0){
                             this.mover(matriz[this.posX+1][this.posY],this.posX+1,this.posY);
                             break;
-                        }    
+                        }
+                        else if (hormigasVacias(listaH,this.posX,this.posY+1) == 0){
+                            this.mover(matriz[this.posX][this.posY+1],this.posX,this.posY+1);
+                            break;
+                        }
+                        else if (hormigasVacias(listaH,this.posX-1,this.posY) == 0){
+                            this.mover(matriz[this.posX-1][this.posY],this.posX-1,this.posY);
+                            break;
+                        }
+                        else if (hormigasVacias(listaH,this.posX,this.posY-1) == 0){
+                            this.mover(matriz[this.posX][this.posY-1],this.posX,this.posY-1);
+                            break;
+                        }
                         else{
                             break;
                         }
@@ -246,11 +257,22 @@ public class Defensora extends Hormigas {
                 else if (hormigas.get(i).accion[0]){    //Si me topo anda buscando recurso vamos pa otro lado ese mae no ha encontrado.
                     int x = randomNum();
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
-                        hormigasVacias(listaH,this.posX+1,this.posY);
                         if (hormigasVacias(listaH,this.posX+1,this.posY) == 0){
                             this.mover(matriz[this.posX+1][this.posY],this.posX+1,this.posY);
                             break;
-                        }    
+                        }
+                        else if (hormigasVacias(listaH,this.posX,this.posY+1) == 0){
+                            this.mover(matriz[this.posX][this.posY+1],this.posX,this.posY+1);
+                            break;
+                        }
+                        else if (hormigasVacias(listaH,this.posX-1,this.posY) == 0){
+                            this.mover(matriz[this.posX-1][this.posY],this.posX-1,this.posY);
+                            break;
+                        }
+                        else if (hormigasVacias(listaH,this.posX,this.posY-1) == 0){
+                            this.mover(matriz[this.posX][this.posY-1],this.posX,this.posY-1);
+                            break;
+                        }
                         else{
                             break;
                         }
@@ -274,18 +296,29 @@ public class Defensora extends Hormigas {
                 }  
                 
                 else if (hormigas.get(i).accion[2]){    //Si me topo ya encontró recurso vamos por la carnita asada.
-                    int x = randomNum();
+                    
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
-                        hormigasVacias(listaH,this.posX+1,this.posY);
                         if (hormigasVacias(listaH,this.posX+1,this.posY) == 0){
                             this.mover(matriz[this.posX+1][this.posY],this.posX+1,this.posY);
                             break;
-                        }    
+                        }
+                        else if (hormigasVacias(listaH,this.posX,this.posY+1) == 0){
+                            this.mover(matriz[this.posX][this.posY+1],this.posX,this.posY+1);
+                            break;
+                        }
+                        else if (hormigasVacias(listaH,this.posX-1,this.posY) == 0){
+                            this.mover(matriz[this.posX-1][this.posY],this.posX-1,this.posY);
+                            break;
+                        }
+                        else if (hormigasVacias(listaH,this.posX,this.posY-1) == 0){
+                            this.mover(matriz[this.posX][this.posY-1],this.posX,this.posY-1);
+                            break;
+                        }
                         else{
                             break;
                         }
                     }
-                    
+                
                     else{
                         if (difX < 0){
                         difX += 1;
@@ -300,9 +333,10 @@ public class Defensora extends Hormigas {
                         difY -= 1;
                         }
                         this.mover(matriz[this.posX+difX][this.posY+difY],this.posX+difX,this.posY+difY);
-                    } 
+                    }
                 }
             }
+        
             else if(this.accion[2]){                                           //Si la hormiga anda llevando recurso.
                 
                 int difX = hormigas.get(i).posX - this.posX;
@@ -310,16 +344,28 @@ public class Defensora extends Hormigas {
                 
                 if (hormigas.get(i).accion[1] || hormigas.get(i).accion[0]){        //Si me topo anda atacando o buscando ignoro
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
-                        hormigasVacias(listaH,this.posX-1,this.posY);
-                        if (hormigasVacias(listaH,this.posX-1,this.posY) == 0){
+                        if (hormigasVacias(listaH,this.posX+1,this.posY) == 0){
+                            this.mover(matriz[this.posX+1][this.posY],this.posX+1,this.posY);
+                            break;
+                        }
+                        else if (hormigasVacias(listaH,this.posX,this.posY+1) == 0){
+                            this.mover(matriz[this.posX][this.posY+1],this.posX,this.posY+1);
+                            break;
+                        }
+                        else if (hormigasVacias(listaH,this.posX-1,this.posY) == 0){
                             this.mover(matriz[this.posX-1][this.posY],this.posX-1,this.posY);
                             break;
-                        }    
+                        }
+                        else if (hormigasVacias(listaH,this.posX,this.posY-1) == 0){
+                            this.mover(matriz[this.posX][this.posY-1],this.posX,this.posY-1);
+                            break;
+                        }
                         else{
                             break;
                         }
                     }
-                    
+                }
+  
                     else{
                         if (difX < 0){
                         difX -= 1;
@@ -338,15 +384,27 @@ public class Defensora extends Hormigas {
                 }
                 else if (hormigas.get(i).accion[2]){                                //Si me topo lleva la sigo a casita
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
-                        hormigasVacias(listaH,this.posX-1,this.posY);
-                        if (hormigasVacias(listaH,this.posX-1,this.posY) == 0){
+                        if (hormigasVacias(listaH,this.posX+1,this.posY) == 0){
+                            this.mover(matriz[this.posX+1][this.posY],this.posX+1,this.posY);
+                            break;
+                        }
+                        else if (hormigasVacias(listaH,this.posX,this.posY+1) == 0){
+                            this.mover(matriz[this.posX][this.posY+1],this.posX,this.posY+1);
+                            break;
+                        }
+                        else if (hormigasVacias(listaH,this.posX-1,this.posY) == 0){
                             this.mover(matriz[this.posX-1][this.posY],this.posX-1,this.posY);
                             break;
-                        }    
+                        }
+                        else if (hormigasVacias(listaH,this.posX,this.posY-1) == 0){
+                            this.mover(matriz[this.posX][this.posY-1],this.posX,this.posY-1);
+                            break;
+                        }
                         else{
                             break;
                         }
                     }
+                }
                     
                     else{
                         if (difX < 0){
@@ -382,6 +440,7 @@ public class Defensora extends Hormigas {
     public void enemigoCerca(Objeto enemigo) {
         enemigo.disminuirSalud();
         this.cambiarAccion(1);
+        
         System.out.println(enemigo.salud);
     }
     
