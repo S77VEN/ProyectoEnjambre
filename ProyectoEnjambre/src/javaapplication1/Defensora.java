@@ -181,10 +181,10 @@ public class Defensora extends Hormigas {
             }
         }
         if (hcercana.isEmpty()){
-            
+            // Llamar funcion en caso de que no hayan hormigas cerca
         }  
         else{
-            
+            interactuarHormigas(matriz, hcercana);
         }
         
     }
