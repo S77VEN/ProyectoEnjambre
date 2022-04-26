@@ -16,13 +16,14 @@ import java.util.Arrays;
 public abstract class Hormigas{
     int posX;
     int posY;
-    boolean accion[] = {false, false, false}; 
+    boolean accion[] = {true, false, false}; 
     JLabel imagen;
     
     public abstract void mover(JLabel campo, int masX, int masY);
     public abstract void prioridades(ArrayList<Objeto> cercanos, JLabel[][] matriz,  Hormigas[] listaH);
     public abstract void verificarCasillasCercanas(JLabel[][] matriz, Objeto[] objeto, Hormigas[] listaH);
-    public abstract void verificarHormigas (Hormigas[] listaH);
+    public abstract void verificarHormigas (JLabel[][] matriz, Hormigas[] listaH);
+    public abstract void interactuarHormigas (JLabel[][] matriz, ArrayList<Hormigas> hormigas);
     public abstract void recursoCerca (Objeto recurso);
     public abstract void enemigoCerca (Objeto enemigo);
     public abstract void obstaculoCerca(Objeto obstaculo);

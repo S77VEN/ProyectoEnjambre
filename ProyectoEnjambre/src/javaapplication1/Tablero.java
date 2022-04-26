@@ -119,7 +119,7 @@ public class Tablero extends javax.swing.JFrame {
         listaO[7].posX = 6;
         listaO[7].posY = 9;
         listaO[8].posX = 19;
-        listaO[8].posY = 2;
+        listaO[8].posY = 3;
         
         for (int i = 0; i < cantidadO; i++) {
             if (i < 3)
@@ -174,8 +174,11 @@ public class Tablero extends javax.swing.JFrame {
     
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
         for (int i = 15; i >= 0; i--) {
-            System.out.println(listaO[7].getClass().getSimpleName());
+            listaH[i].verificarCasillasCercanas(matriz, listaO, listaH);
         }
+       
+       
+        
        
     }//GEN-LAST:event_StartActionPerformed
 
