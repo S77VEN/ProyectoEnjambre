@@ -159,7 +159,7 @@ public class Recolectora extends Hormigas{
     
     
     @Override
-    public void verificarHormigas (JLabel[][] matriz, Hormigas[] listaH){
+    public int verificarHormigas (JLabel[][] matriz, Hormigas[] listaH){
         ArrayList<Hormigas> hcercana = new ArrayList<>();
         
         int minX = this.posX - 2;
@@ -170,16 +170,24 @@ public class Recolectora extends Hormigas{
         
         for (int i = 0; i < 16; i++){
             if ((listaH[i].posX >= minX && listaH[i].posX <= maxX ) && (listaH[i].posY >=minY && listaH[i].posY <= maxY )){
-                hcercana.add(listaH[i]);
+                if (listaH[i] == this)
+                    this.posX = this.posX;
+                else
+                   hcercana.add(listaH[i]);
             }
         }
-        if (hcercana.isEmpty()){
-            this.mover(matriz[this.posX + 1][this.posY], this.posX + 1, this.posY);
-        }
+        if (hcercana.isEmpty())
+            return 0;
         else
-            mover(matriz[this.posX + 1][this.posY], this.posX + 1, this.posY );
-            interactuarHormigas(matriz, hcercana);
+            return 1;
     }
+    
+    
+    
+    
+    
+    
+    
     
     public void interactuarHormigas (JLabel[][] matriz, ArrayList<Hormigas> hormigas){
         for (int i = 0; i < hormigas.size(); i++) {

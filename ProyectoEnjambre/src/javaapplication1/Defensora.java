@@ -44,6 +44,9 @@ public class Defensora extends Hormigas {
                         this.enemigoCerca(cercanos.get(i));
                         break;
                     }
+                    else if (verificarHormigas(matriz, listaH) == 0){
+                        this.posX = this.posX;
+                    }
                     else{
                         if (difX < 0){
                             difX += 1;
@@ -124,14 +127,7 @@ public class Defensora extends Hormigas {
                     System.out.println("Paso esto otra vez");
                     
                 }
-                    
-                
-                
-                
             }
-            
-            
-            
         }
     }
     
@@ -164,7 +160,7 @@ public class Defensora extends Hormigas {
     }
     
     @Override
-    public void verificarHormigas(JLabel[][] matriz, Hormigas[] listaH){
+    public int verificarHormigas(JLabel[][] matriz, Hormigas[] listaH){
         ArrayList<Hormigas> hcercana = new ArrayList<>();
         
         int minX = this.posX - 2;
@@ -175,29 +171,34 @@ public class Defensora extends Hormigas {
         
         for (int i = 0; i < 16; i++){
             if ((listaH[i].posX >= minX && listaH[i].posX <= maxX ) && (listaH[i].posY >=minY && listaH[i].posY <= maxY )){
-                hcercana.add(listaH[i]);
+                if (listaH[i] == this)
+                    this.posX = this.posX;
+                else
+                   hcercana.add(listaH[i]);
             }
         }
-        if (hcercana.isEmpty()){
-            this.mover(matriz[this.posX + 1][this.posY], this.posX + 1, this.posY);
-        }
+        if (hcercana.isEmpty())
+            return 0;
         else
-            this.mover(matriz[this.posX + 1][this.posY], this.posX + 1, this.posY );
-        
+            return 1;
     }
+    
     
     @Override
     public void interactuarHormigas (JLabel[][] matriz, ArrayList<Hormigas> hormigas){
         for (int i = 0; i < hormigas.size(); i++) {
-            System.out.println("Detectada");
+            
+            
         }
     }
+    
     
     @Override
     public void recursoCerca(Objeto recurso) {
         recurso.disminuirSalud();
         this.cambiarAccion(2);
     }
+    
 
     @Override
     public void enemigoCerca(Objeto enemigo) {
@@ -205,10 +206,12 @@ public class Defensora extends Hormigas {
         enemigo.disminuirSalud();
     }
     
+    
     @Override
     public void obstaculoCerca(Objeto obstaculo){
         
     }
+    
     
     @Override
     public void cambiarAccion(int opcion){
@@ -217,16 +220,19 @@ public class Defensora extends Hormigas {
         }
         this.accion[opcion] = true;
     }
+    
 
     @Override
     public void otraLlevaRecurso() {
         System.out.println("OLR");
     }
+    
 
     @Override
     public void otraDetectoEnemigo() {
         System.out.println("ODE");
     }
+    
 
     @Override
     public void otraBuscarecurso() {
