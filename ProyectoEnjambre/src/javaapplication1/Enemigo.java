@@ -24,6 +24,7 @@ public class Enemigo extends Objeto{
     @Override
     public void desaparecer() {
         this.imagen.setIcon(null);
+        this.recolocar();
         System.out.println(this.imagen);
     }
 
@@ -40,8 +41,8 @@ public class Enemigo extends Objeto{
     
     @Override
     public void recolocar(){
-        this.posX = rangoRandom(25);
-        this.posY = rangoRandom(12);      
+        this.posX = 24;
+        this.posY = 10;    
         System.out.println("recolocado xd");
     }
     
