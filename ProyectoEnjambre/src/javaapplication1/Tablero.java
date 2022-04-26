@@ -179,13 +179,10 @@ public class Tablero extends javax.swing.JFrame {
 
     
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-        for (int i = 15; i >= 0; i--) {
+        for (int i = 0; i < 16; i++) {
             listaH[i].verificarCasillasCercanas(matriz, listaO, listaH);
         }
-       
-       
         
-       
     }//GEN-LAST:event_StartActionPerformed
 
     /**

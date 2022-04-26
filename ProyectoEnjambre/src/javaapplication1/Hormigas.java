@@ -20,8 +20,9 @@ public abstract class Hormigas{
     JLabel imagen;
     
     public abstract void mover(JLabel campo, int masX, int masY);
-    public abstract void prioridades(ArrayList<Objeto> cercanos, JLabel[][] matriz,  Hormigas[] listaH);
+    public abstract void prioridades(ArrayList<Objeto> cercanos, JLabel[][] matriz,  Hormigas[] listaH, Objeto[] listaO);
     public abstract void verificarCasillasCercanas(JLabel[][] matriz, Objeto[] objeto, Hormigas[] listaH);
+    public abstract int objetosVacios(Objeto[] listaO, int newX, int newY);
     public abstract int hormigasVacias(Hormigas[] listaH, int newX, int newY);
     public abstract void verificarHormigas (JLabel[][] matriz, Hormigas[] listaH);
     public abstract void interactuarHormigas (JLabel[][] matriz, ArrayList<Hormigas> hormigas, Hormigas[] listaH);
