@@ -189,7 +189,7 @@ public class Recolectora extends Hormigas{
     
     
     
-    public void interactuarHormigas (JLabel[][] matriz, ArrayList<Hormigas> hormigas){
+    public void interactuarHormigas (JLabel[][] matriz, ArrayList<Hormigas> hormigas, Hormigas[] listaH){
         for (int i = 0; i < hormigas.size(); i++) {
             System.out.println("Hola");
         }
@@ -214,6 +214,7 @@ public class Recolectora extends Hormigas{
     
     
     public void cambiarAccion(int opcion){
+        
         for (int i = 0; i < 3; i++) {
             this.accion[i] = false;
         }

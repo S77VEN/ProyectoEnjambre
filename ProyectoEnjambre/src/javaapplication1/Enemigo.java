@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package javaapplication1;
+import java.util.Random;
 import javax.swing.JLabel;
 
 /**
@@ -14,25 +15,33 @@ public class Enemigo extends Objeto{
     public Enemigo (){
         this.salud = 10;
     }
-
+    
+    public int rangoRandom(int rango){
+        Random aleatorio = new Random();
+        int x = aleatorio.nextInt();
+        return x;
+    }
     @Override
     public void desaparecer() {
-        System.out.println("Desaparece xd");
+        this.imagen.setIcon(null);
+        System.out.println(this.imagen);
     }
+
     
     @Override
     public void disminuirSalud(){
         if (this.salud > 0){
-            this.salud = this.salud - 1;
-            
+            this.salud = this.salud - 1; 
         }
         else{
-            System.out.println("Se murio xd");
+            desaparecer();
         }
     }
     
     @Override
     public void recolocar(){
+        this.posX = rangoRandom(25);
+        this.posY = rangoRandom(12);      
         System.out.println("recolocado xd");
     }
     

@@ -4,6 +4,8 @@
  */
 package javaapplication1;
 
+import java.util.Random;
+
 /**
  *
  * @author xavid
@@ -13,6 +15,7 @@ public class Simulacion {
         
         Tablero tablero = new Tablero(); 
         tablero.setVisible(true);
+        
     }
      
     

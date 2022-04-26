@@ -80,7 +80,7 @@ public class Tablero extends javax.swing.JFrame {
                 if (i < 5 & i > 0 & j < 5 & j > 0){
                     if ((i+j)% 2 == 0){
                         matriz[i][j].setOpaque(false);
-                        matriz[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ataque.png")));
+                        matriz[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
                         listaH[contador].posX = i;
                         listaH[contador].posY = j;
                         listaH[contador].imagen = matriz[i][j];
@@ -89,7 +89,7 @@ public class Tablero extends javax.swing.JFrame {
                     }
                     else{
                         matriz[i][j].setOpaque(false);
-                        matriz[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recoleccion.png")));
+                        matriz[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ataque.png")));
                         listaH[contador].posX = i;
                         listaH[contador].posY = j;
                         listaH[contador].imagen = matriz[i][j];
@@ -122,12 +122,18 @@ public class Tablero extends javax.swing.JFrame {
         listaO[8].posY = 3;
         
         for (int i = 0; i < cantidadO; i++) {
-            if (i < 3)
+            if (i < 3){
                 matriz[listaO[i].posX][listaO[i].posY].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enemigo.png")));
-            else if(i < 6)
+                listaO[i].imagen = matriz[listaO[i].posX][listaO[i].posY];
+            }
+            else if(i < 6){
                 matriz[listaO[i].posX][listaO[i].posY].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recurso.png")));
-            else
+                listaO[i].imagen = matriz[listaO[i].posX][listaO[i].posY];
+            }
+            else{
                 matriz[listaO[i].posX][listaO[i].posY].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/obstaculo.png")));
+                listaO[i].imagen = matriz[listaO[i].posX][listaO[i].posY];
+            }
         }
     }
     
