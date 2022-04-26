@@ -24,7 +24,7 @@ public class Enemigo extends Objeto{
     public void disminuirSalud(){
         if (this.salud > 0){
             this.salud = this.salud - 1;
-            System.out.println(this.salud);
+            
         }
         else{
             System.out.println("Se murio xd");
