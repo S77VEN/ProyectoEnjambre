@@ -100,26 +100,17 @@ public class Tablero extends javax.swing.JFrame {
         }
     }
     public void colocarObjetos(){
-        listaO[0].posX = 22;
-        listaO[0].posY = 6;
-        listaO[1].posX = 10;
-        listaO[1].posY = 1;
-        listaO[2].posX = 2;
-        listaO[2].posY = 9;
+        listaO[0].posX = 22;listaO[0].posY = 6;
+        listaO[1].posX = 10;listaO[1].posY = 1;
+        listaO[2].posX = 2;listaO[2].posY = 9;
         
-        listaO[3].posX = 22;
-        listaO[3].posY = 10;
-        listaO[4].posX = 22;
-        listaO[4].posY = 1;
-        listaO[5].posX = 10;
-        listaO[5].posY = 8;
+        listaO[3].posX = 22;listaO[3].posY = 10;
+        listaO[4].posX = 22;listaO[4].posY = 1;
+        listaO[5].posX = 10;listaO[5].posY = 8;
    
-        listaO[6].posX = 12;
-        listaO[6].posY = 5;
-        listaO[7].posX = 6;
-        listaO[7].posY = 9;
-        listaO[8].posX = 19;
-        listaO[8].posY = 2;
+        listaO[6].posX = 12;listaO[6].posY = 5;
+        listaO[7].posX = 6;listaO[7].posY = 9;
+        listaO[8].posX = 19;listaO[8].posY = 2;
         
         for (int i = 0; i < cantidadO; i++) {
             if (i < 3)
