@@ -379,13 +379,6 @@ public class Defensora extends Hormigas {
         System.out.println(enemigo.salud);
     }
     
-    
-    @Override
-    public void obstaculoCerca(Objeto obstaculo){
-        
-    }
-    
-    
     @Override
     public void cambiarAccion(int opcion){
         for (int i = 0; i < 3; i++) {
@@ -393,26 +386,4 @@ public class Defensora extends Hormigas {
         }
         this.accion[opcion] = true;
     }
-    
-
-    @Override
-    public void otraLlevaRecurso() {
-        System.out.println("OLR");
-    }
-    
-
-    @Override
-    public void otraDetectoEnemigo() {
-        System.out.println("ODE");
-    }
-    
-
-    @Override
-    public void otraBuscarecurso() {
-        System.out.println("OBR");
-    }
-
-    
-  
-    
 }

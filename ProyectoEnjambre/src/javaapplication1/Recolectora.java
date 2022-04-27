@@ -377,18 +377,12 @@ public class Recolectora extends Hormigas{
         //this.cambiarAccion(2);
     }
     
+    
 
     @Override
     public void enemigoCerca(Objeto enemigo,JLabel[][] matriz) {
         this.cambiarAccion(1);
     }
-    
-    
-    @Override
-    public void obstaculoCerca(Objeto obstaculo){
-        
-    }
-    
     
     @Override
     public void cambiarAccion(int opcion){
@@ -397,26 +391,4 @@ public class Recolectora extends Hormigas{
         }
         this.accion[opcion] = true;
     }
-    
-
-    @Override
-    public void otraLlevaRecurso() {
-        System.out.println("OLR");
-    }
-    
-
-    @Override
-    public void otraDetectoEnemigo() {
-        System.out.println("ODE");
-    }
-    
-
-    @Override
-    public void otraBuscarecurso() {
-        System.out.println("OBR");
-    }
-
-    
-  
-    
 }
