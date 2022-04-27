@@ -18,27 +18,33 @@ public class Recurso extends Objeto {
     }
     public int rangoRandom(int rango){
         Random aleatorio = new Random();
-        int x = aleatorio.nextInt();
+        int x = aleatorio.nextInt(rango);
         return x;
     }
     @Override
-    public void desaparecer() {
+    public void desaparecer(JLabel[][] matriz) {
         this.imagen.setIcon(null);
-        System.out.println("Desaparece xd");
+        this.recolocar(matriz);
+        System.out.println(this.imagen);
     }
     @Override
-    public void disminuirSalud() {
+    public void disminuirSalud(JLabel[][] matriz){
         if (this.salud > 0){
             this.salud = this.salud - 1; 
         }
         else{
-            desaparecer();
+            desaparecer(matriz);
         }
     }
     @Override
-    public void recolocar() {
-        this.posX = rangoRandom(25);
-        this.posY = rangoRandom(12);
-    }
+    public void recolocar(JLabel[][] matriz){
+        this.posX = rangoRandom(24);
+        System.out.println(this.posX);
+        this.posY = rangoRandom(11);
+        matriz[this.posX][this.posY].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recurso.png")));
+        this.imagen = matriz[this.posX][this.posY];
+        this.salud = 10;
+        System.out.println("recolocado xd");
+    } 
     
 }

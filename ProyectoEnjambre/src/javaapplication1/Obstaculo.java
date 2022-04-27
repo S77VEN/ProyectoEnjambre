@@ -15,17 +15,17 @@ public class Obstaculo extends Objeto {
     }
 
     @Override
-    public void desaparecer() {
+    public void desaparecer(JLabel[][] matriz) {
         System.out.println("no desaparece");
     }
 
     @Override
-    public void disminuirSalud() {
+    public void disminuirSalud(JLabel[][] matriz) {
         System.out.println("Nada");
     }
 
     @Override
-    public void recolocar() {
+    public void recolocar(JLabel[][] matriz) {
         System.out.println("Nada");
     }
     

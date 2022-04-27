@@ -16,8 +16,8 @@ public abstract class Objeto{
     int salud;
     JLabel imagen;
     
-    public abstract void desaparecer();
-    public abstract void disminuirSalud();
-    public abstract void recolocar();
+    public abstract void desaparecer(JLabel[][] matriz);
+    public abstract void disminuirSalud(JLabel[][] matriz);
+    public abstract void recolocar(JLabel[][] matriz);
     
 }

@@ -17,28 +17,32 @@ public class Enemigo extends Objeto{
     }
     public int rangoRandom(int rango){
         Random aleatorio = new Random();
-        int x = aleatorio.nextInt();
+        int x = aleatorio.nextInt(rango);
         return x;
     }
     @Override
-    public void desaparecer() {
+    public void desaparecer(JLabel[][] matriz) {
         this.imagen.setIcon(null);
-        this.recolocar();
+        this.recolocar(matriz);
         System.out.println(this.imagen);
     }
     @Override
-    public void disminuirSalud(){
+    public void disminuirSalud(JLabel[][] matriz){
         if (this.salud > 0){
             this.salud = this.salud - 1; 
         }
         else{
-            desaparecer();
+            desaparecer(matriz);
         }
     }
     @Override
-    public void recolocar(){
-        this.posX = 24;
-        this.posY = 10;    
+    public void recolocar(JLabel[][] matriz){
+        this.posX = rangoRandom(24);
+        System.out.println(this.posX);
+        this.posY = rangoRandom(11);
+        matriz[this.posX][this.posY].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enemigo.png")));
+        this.imagen = matriz[this.posX][this.posY];
+        this.salud = 10;
         System.out.println("recolocado xd");
     }  
 }

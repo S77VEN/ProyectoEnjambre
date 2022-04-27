@@ -39,7 +39,7 @@ public class Tablero extends javax.swing.JFrame {
             for (int j = 0; j<12; j++){
                 matriz[i][j] = new JLabel();
                 matriz[i][j].setText(String.valueOf(i)+","+String.valueOf(j));
-                matriz[i][j].setOpaque(true);
+                matriz[i][j].setOpaque(false);
                 matriz[i][j].setBackground(new java.awt.Color(255, 255, 0));
                 jPanel1.add(matriz[i][j], new org.netbeans.lib.awtextra.AbsoluteConstraints(i*65, j*65, 60, 60));
             } 
@@ -99,6 +99,7 @@ public class Tablero extends javax.swing.JFrame {
             } 
         }
     }
+    
     public void colocarObjetos(){
         listaO[0].posX = 22;
         listaO[0].posY = 6;

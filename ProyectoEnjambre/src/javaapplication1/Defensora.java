@@ -51,7 +51,7 @@ public class Defensora extends Hormigas {
                     int difY = cercanos.get(i).posY - this.posY;
                     
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
-                        this.enemigoCerca(cercanos.get(i));
+                        this.enemigoCerca(cercanos.get(i),matriz);
                         break;
                     }
                     else{
@@ -92,7 +92,7 @@ public class Defensora extends Hormigas {
                     int difY = cercanos.get(i).posY - this.posY;
                     
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
-                        this.recursoCerca(cercanos.get(i));
+                        this.recursoCerca(cercanos.get(i),matriz);
                         break;
                     }
                     else{
@@ -366,15 +366,15 @@ public class Defensora extends Hormigas {
     
     
     @Override
-    public void recursoCerca(Objeto recurso) {
-        recurso.disminuirSalud();
+    public void recursoCerca(Objeto recurso,JLabel[][] matriz) {
+        recurso.disminuirSalud(matriz);
         this.cambiarAccion(2);
     }
     
 
     @Override
-    public void enemigoCerca(Objeto enemigo) {
-        enemigo.disminuirSalud();
+    public void enemigoCerca(Objeto enemigo,JLabel[][] matriz) {
+        enemigo.disminuirSalud(matriz);
         this.cambiarAccion(1);
         System.out.println(enemigo.salud);
     }

@@ -51,7 +51,7 @@ public class Recolectora extends Hormigas{
                     int difY = cercanos.get(i).posY - this.posY;
                     
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
-                        this.enemigoCerca(cercanos.get(i));
+                        this.enemigoCerca(cercanos.get(i),matriz);
                         break;
                     }
                     else{
@@ -99,7 +99,7 @@ public class Recolectora extends Hormigas{
                     int difY = cercanos.get(i).posY - this.posY;
                     
                     if (difX == 1  || difY == 1  ||  difX == -1  || difY == -1){
-                        this.recursoCerca(cercanos.get(i));
+                        this.recursoCerca(cercanos.get(i),matriz);
                         break;
                     }
                     else{
@@ -112,8 +112,7 @@ public class Recolectora extends Hormigas{
                         else{
                             difX -= 1; 
                         }
-                        
-                        if(difY == 0){
+                        if (difY == 0){
                             ;
                         }
                         else if (difY < 0){
@@ -123,16 +122,15 @@ public class Recolectora extends Hormigas{
                             difY -= 1;
                         }
                         
-                        if (hormigasVacias(listaH, this.posX + difX, this.posY + difY) == 1){
+                        if ((hormigasVacias(listaH, this.posX - difX, this.posY - difY) == 1)   || (objetosVacios(listaO,this.posX - difX, this.posY - difY) == 1 ) ) {
                             break;
                         }
                         else{
                            this.mover(matriz[this.posX + difX][this.posY + difY], this.posX + difX, this.posY + difY);
                            break; 
                         }
-                    }
                 }
-                
+                }
                 
                 else if(cercanos.get(i).getClass().getTypeName() == "javaapplication1.Obstaculo"){
                     if ((cercanos.get(i).posX == this.posX + 1) && (cercanos.get(i).posY == this.posY)){
@@ -254,7 +252,7 @@ public class Recolectora extends Hormigas{
                 
                 if (hormigas.get(i).accion[1]){         //Si me topo anda atacando se equipa pa la guerra y la sigue.
                     if (hormigasVacias(listaH,this.posX + 1, this.posY) == 1){
-                        
+                        break;
                     }
                 }
                 else if (hormigas.get(i).accion[0]){    //Si me topo anda buscando recurso vamos pa otro lado ese mae no ha encontrado.
@@ -374,14 +372,14 @@ public class Recolectora extends Hormigas{
     
     
     @Override
-    public void recursoCerca(Objeto recurso) {
-        recurso.disminuirSalud();
-        this.cambiarAccion(2);
+    public void recursoCerca(Objeto recurso,JLabel[][] matriz) {
+        recurso.disminuirSalud(matriz);
+        //this.cambiarAccion(2);
     }
     
 
     @Override
-    public void enemigoCerca(Objeto enemigo) {
+    public void enemigoCerca(Objeto enemigo,JLabel[][] matriz) {
         this.cambiarAccion(1);
     }
     
